@@ -12,7 +12,7 @@ select
     customers.name,
     customers.email,
     coalesce(orders_per_customer.number_of_orders, 0) as n_orders,
-    orders_per_customer.number_of_orders
+    orders_per_customer.first_order_at
 from `analytics-engineers-club.coffee_shop.customers` customers
 left join orders_per_customer on customers.id = orders_per_customer.customer_id
 order by orders_per_customer.first_order_at 
