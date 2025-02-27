@@ -9,11 +9,11 @@ with orders_per_customer as (
 
 select
     customer_id,     
-    customers.name, 
+    customers.name,
     customers.email,
-    orders_per_customer.first_order_at,
+    coalesce(orders_per_customer.number_of_orders, 0) as n_orders,
     orders_per_customer.number_of_orders
 from `analytics-engineers-club.coffee_shop.customers` customers
-inner join orders_per_customer on customers.id = orders_per_customer.customer_id
+left join orders_per_customer on customers.id = orders_per_customer.customer_id
 order by orders_per_customer.first_order_at 
 limit 5
