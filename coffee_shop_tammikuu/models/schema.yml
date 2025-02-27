@@ -2,7 +2,7 @@ version: 2
  
 models:
   - name: customer
-    description: Cleaned up data for our customers
+    description: '{{ doc("customer_description") }}'
     columns:
       - name: customer_id
         description: Primary key of the model
