@@ -16,4 +16,4 @@ select
 from `analytics-engineers-club.coffee_shop.customers` customers
 left join orders_per_customer on customers.id = orders_per_customer.customer_id
 order by orders_per_customer.first_order_at 
-limit 5
+limit 10
