@@ -2,9 +2,16 @@ version: 2
  
 sources:
   - name: coffee_shop
+    description: 'This is a source description by Anna'
     project: analytics-engineers-club
+    freshness:
+      error_after:
+        count: 300
+        period: hour
+    loaded_at_field: created_at
     tables:
       - name: customers
+        description: 'This is a description for Table customers'
         columns:
           - name: id
             tests:
@@ -12,6 +19,7 @@ sources:
               - not_null
  
       - name: orders
+        description: 'This is a description for Table orders'
         columns:
           - name: id
             tests:
