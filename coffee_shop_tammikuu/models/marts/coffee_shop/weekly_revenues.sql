@@ -30,13 +30,13 @@ first_order as (
         min(orders.created_at) over (partition by customers.customer_id) as date_of_first_order
     from
         {{ ref('stg_coffee_shop__customers') }} as customers
-    left join orders on customers.customer_id = orders.customer_id
+    left join {{ ref('stg_coffee_shop__orders') }} as orders on customers.customer_id = orders.customer_id
 )
 
 
 select 
     customers.customer_id,
-    case when date_of_first_order = date_of_this_order then 'New' 
+    case when date_of_first_order = date_of_order then 'New' 
         else 'Returning'
     end as customer_type_for_order,
     weekly_prices.order_id,
