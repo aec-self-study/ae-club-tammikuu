@@ -56,4 +56,18 @@ sources:
           - name: product_id
             description: 'refers to product table'
             tests:
-              - not_null      
+              - not_null
+  - name: web_tracking
+    description: 'This is a source description by Anna'
+    project: analytics-engineers-club
+    freshness:
+      error_after:
+        count: 300
+        period: hour
+    loaded_at_field: created_at
+    tables: 
+      - name: pageviews
+        columns:
+            - name: id
+              tests:
+                - not_null
