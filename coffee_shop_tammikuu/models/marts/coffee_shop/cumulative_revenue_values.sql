@@ -30,7 +30,7 @@ select
     customer_weeks.customer_id, 
     date_week, 
     coalesce(weekly_total, 0) as weekly_revenue,
-    sum(coalesce(weekly_total, 0)) over (partition by totals_per_week.customer_id order by date_week rows between unbounded preceding and current row) as cumulative_revenue
+    sum(coalesce(weekly_total, 0)) over (partition by customer_weeks.customer_id order by date_week rows between unbounded preceding and current row) as cumulative_revenue
 from 
     customer_weeks 
 left join 
