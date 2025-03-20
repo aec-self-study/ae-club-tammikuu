@@ -1,5 +1,12 @@
 {{ config(
-    materialized='table'
+    materialized='table',
+    partition_by = {
+      "field": "date_week",
+      "data_type": "timestamp",
+      "granularity": "day"
+    },
+    cluster_by = "customer_id"
+
  ) }}
 
 with customer_weeks as (
