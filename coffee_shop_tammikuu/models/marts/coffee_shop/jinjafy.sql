@@ -1,7 +1,7 @@
 select
   date_trunc(date_of_order, month) as date_month,
   {% for product in ['coffee beans', 'merch', 'brewing supplies'] %}
-  sum(case when category = {{product}}) then price_for_week end) as {{product replace(" ", "_")}}_amount,
+  sum(case when category = '{{product}}' then price_for_week end) as {{product | replace(" ", "_")}}_amount,
   {% endfor %}
   --sum(case when category = 'coffee beans' then price_for_week end) as coffee_beans_amount,
   --sum(case when category = 'merch' then price_for_week end) as merch_amount,
