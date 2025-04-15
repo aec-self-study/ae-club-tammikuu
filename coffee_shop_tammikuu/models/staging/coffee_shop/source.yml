@@ -46,6 +46,9 @@ sources:
               - not_null
           - name: product_id
             description: 'refers to product table'
+          - name: price
+            tests:
+              - has_value
 
       - name: order_items
         description: 'contents for orders'
@@ -71,3 +74,7 @@ sources:
             - name: id
               tests:
                 - not_null
+  - name: advanced_dbt_examples
+    project: analytics-engineers-club
+    tables:
+      - name: form_events
